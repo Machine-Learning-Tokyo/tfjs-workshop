@@ -20,7 +20,7 @@ import {IMAGENET_CLASSES} from './imagenet_classes';
 
 const IMAGE_SIZE = 224;
 
-export type MobileNetVersion = number;
+export type MobileNetVersion = 1|2;
 export type MobileNetAlpha = 0.25|0.50|0.75|1.0;
 
 const EMBEDDING_NODES: {[version: string]: string} = {
@@ -50,7 +50,7 @@ const MODEL_INFO: {[version: string]: {[alpha: string]: string}} = {
 };
 
 export async function load(
-    version: MobileNetVersion = 1, alpha: MobileNetAlpha = 1.0) {
+    version: MobileNetVersion = 1, alpha: MobileNetAlpha = 1.0, isCustom: boolean = false) {
   if (tf == null) {
     throw new Error(
         `Cannot find TensorFlow.js. If you are using a <script> tag, please ` +
@@ -71,23 +71,30 @@ export async function load(
         `${Object.keys(MODEL_INFO[versionStr])}.`);
   }
 
-  const mobilenet = new MobileNet(versionStr, alphaStr);
+  const mobilenet = new MobileNet(versionStr, alphaStr, isCustom);
   await mobilenet.load();
   return mobilenet;
 }
 
 export class MobileNet {
-  model: tf.GraphModel;
+  model: tf.GraphModel|tf.LayersModel;
 
   private normalizationOffset: tf.Scalar;
+  private isCustom: boolean;
 
-  constructor(public version: string, public alpha: string) {
+  constructor(public version: string, public alpha: string, isCustom: boolean) {
     this.normalizationOffset = tf.scalar(127.5);
+    this.isCustom = isCustom;
   }
 
   async load() {
-    const url = MODEL_INFO[this.version][this.alpha];
-    this.model = await tf.loadGraphModel(url, {fromTFHub: true});
+    if (this.isCustom) {
+      this.model = await tf.loadLayersModel('mymobilenet/model.json');
+    } else {
+      const url = MODEL_INFO[this.version][this.alpha];
+      this.model = await tf.loadGraphModel(url, {fromTFHub: true});
+    }
+
 
     // Warmup the model.
     const result = tf.tidy(
@@ -139,8 +146,10 @@ export class MobileNet {
         result = internal.squeeze([1, 2]);
       } else {
         const logits1001 = this.model.predict(batched) as tf.Tensor2D;
+        console.log(logits1001);
         // Remove the very first logit (background noise).
-        result = logits1001.slice([0, 1], [-1, 1000]);
+        // result = logits1001.slice([0, 1], [-1, 1000]);
+        result = logits1001;
       }
 
       return result;

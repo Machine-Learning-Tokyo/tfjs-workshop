@@ -2,7 +2,7 @@ import * as mobilenet from './mobilenet';
 
 async function run(img: HTMLImageElement) {
   // Load the model.
-  const model = await mobilenet.load(2, 1.0);
+  const model = await mobilenet.load(2, 1.0, true);
 
   // Classify the image.
   const predictions = await model.classify(img);
@@ -20,10 +20,6 @@ async function run(img: HTMLImageElement) {
   const logits = model.infer(img);
   console.log('Logits');
   logits.print(true);
-  // Get the embedding.
-  const embedding = model.infer(img, true);
-  console.log('Embedding');
-  embedding.print(true);  
 }
 
 window.onload = (e) => {
