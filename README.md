@@ -7,10 +7,8 @@ Contains material for a TensorFlow.js workshop
 Web application demonstrating image classfication using MobileNet. The application classified the given image.
 
 ```
-$ yarn
-$ yarn server
-
-# localhost:8080/demo will show the result of classification.
+$ npx parcel src/index.html --open
 ```
 
+It will automatically launch the webapp to classify the given image.
 That application is based on MobileNet demo in [tfjs-models](https://github.com/tensorflow/tfjs-models).
