@@ -2,7 +2,7 @@ import * as mobilenet from './mobilenet';
 
 async function run(img: HTMLImageElement) {
   // Load the model.
-  const model = await mobilenet.load(2, 1.0, true);
+  const model = await mobilenet.load(2, 1.0, false);
 
   // Classify the image.
   const predictions = await model.classify(img);
