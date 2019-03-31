@@ -5,7 +5,6 @@ import 'babel-polyfill';
 
 const INPUT_LENGTH = 40;
 const CHARS_TO_GENERATE = 200;
-const DIVERSITY = 0.5;
 
 /**
  * Main application to start on window load
@@ -18,6 +17,12 @@ class Main {
   constructor() {
     // Initiate variables
     this.generatedSentence = document.getElementById("generated-sentence");
+    this.diversity = 0.5;
+    this.inputDiversity = document.getElementById("diversity");
+    this.inputDiversity.onchange = (evt) => {
+      this.diversity = evt.target.value/40.
+      console.log('diversity changed to', this.diversity);
+    }
     this.inputSeed = document.getElementById("seed");
     this.generateButton = document.getElementById("generate-button");
     this.generateButton.onclick = () => {
@@ -70,7 +75,7 @@ class Main {
   sample(prediction) {
     return tf.tidy(() => {
       prediction = prediction.log();
-      const diversity = tf.scalar(DIVERSITY);
+      const diversity = tf.scalar(this.diversity);
       prediction = prediction.div(diversity);
       prediction = prediction.exp();
       prediction = prediction.div(prediction.sum());
