@@ -12,3 +12,14 @@ $ npx parcel src/index.html --open
 
 It will automatically launch the webapp to classify the given image.
 That application is based on MobileNet demo in [tfjs-models](https://github.com/tensorflow/tfjs-models).
+
+## web-js
+
+This is the same application written in pure JavaScript.
+
+```
+$ npx parcel src/index.html --open
+```
+
+It will automatically launch the webapp to classify the given image.
+That application is based on MobileNet demo in [tfjs-examples](https://github.com/tensorflow/tfjs-examples/tree/master/mobilenet).
