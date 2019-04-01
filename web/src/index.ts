@@ -1,8 +1,10 @@
 import * as mobilenet from './mobilenet';
 
 async function run(img: HTMLImageElement) {
-  // Load the model.
+  // Load the model from TensorHub.
   const model = await mobilenet.load(2, 1.0, false);
+  // Load the model from local
+  // const model = await mobilenet.load(2, 1.0, true);
 
   // Classify the image.
   const predictions = await model.classify(img);
