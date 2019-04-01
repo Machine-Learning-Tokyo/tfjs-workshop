@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Text Generation with TensorFlow.js</title>
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="page-wrap">
+        <div class="container"> 
+            <div class="row">
+                <h1 class="title">Generate an original Nietschze quote!</h1>
+                <h2 class="title">This demo uses an LSTM trained on Nietschze's writings running on TensorFlow.js.</h2>
+            </div>
+            <div class="row">
+                <input type="text" id="seed" maxlength="40" placeholder="Give Nietschze some hint of what to talk about">
+            </div>
+            <div class="row">
+                <label for="diversity">Diversity:</label>
+                <input type="number" name="diversity" id="diversity" min=1 max=100 value=50>
+            </div>
+            <div class="row">
+                <button id="generate-button" disabled>Loading Speech Generation model...</button>
+            </div>
+            <div class="row">
+                <blockquote>
+                    <p id="generated-sentence"></p>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
