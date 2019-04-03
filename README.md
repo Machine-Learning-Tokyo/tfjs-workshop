@@ -44,5 +44,6 @@ $ npx parcel src/index.html --open
 
 It is also necessary to change the code to switch the loaded model. 
 
-
+- [Switching model in web](https://github.com/Machine-Learning-Tokyo/tfjs-workshop/blob/master/web/src/index.ts#L4-L7)
+- [Switching model in web-js](https://github.com/Machine-Learning-Tokyo/tfjs-workshop/blob/master/web-js/src/index.js#L33-L37)
 
