@@ -47,3 +47,18 @@ It is also necessary to change the code to switch the loaded model.
 - [Switching model in web](https://github.com/Machine-Learning-Tokyo/tfjs-workshop/blob/master/web/src/index.ts#L4-L7)
 - [Switching model in web-js](https://github.com/Machine-Learning-Tokyo/tfjs-workshop/blob/master/web-js/src/index.js#L33-L37)
 
+## Step 4. Publish the application in the internet
+
+You can publish the application in the internet by using [GitHub pages](https://pages.github.com/). Please follow the instruction in [GitHub pages](https://pages.github.com/) to bootstrap the site. Once the repository is prepared, copy the artifacts of the application in `dist` to the repository. 
+
+```
+$ cd username.github.io
+$ mv /path/to/tfjs-workshop/web/dist .
+$ git add --all
+$ git commit -m "Initial commit"
+$ git push -u origin master
+```
+
+Then your will see the application in `http://username.github.io`.
+
+
