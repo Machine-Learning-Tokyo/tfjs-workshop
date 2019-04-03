@@ -30,7 +30,11 @@ let mobilenet;
 const mobilenetDemo = async () => {
   console.log('Loading model...');
 
+  // Pretrained model
   mobilenet = await tf.loadLayersModel(MOBILENET_MODEL_PATH);
+
+  // Load your own model
+  // mobilenet = await tf.loadLayersModel('./mymobilenet/mode.json');
 
   // Warmup the model. This isn't necessary, but makes the first prediction
   // faster. Call `dispose` to release the WebGL memory allocated for the return
