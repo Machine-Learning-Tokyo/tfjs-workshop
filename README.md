@@ -2,6 +2,10 @@
 
 Contains material for a [TensorFlow.js workshop](https://www.meetup.com/Machine-Learning-Tokyo/events/260167619/).
 
+Presentation slides at:
+
+https://docs.google.com/presentation/d/1jHkbAQHWIXM7clDwTCzlqPPbnAd4xRoDo34sp6OHe_A/edit?usp=sharing
+
 ```
 $ git clone git@github.com:Machine-Learning-Tokyo/tfjs-workshop.git
 ```
