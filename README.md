@@ -1,6 +1,6 @@
 # tfjs-workshop
 
-Contains material for a TensorFlow.js workshop
+Contains material for a [TensorFlow.js workshop](https://www.meetup.com/Machine-Learning-Tokyo/events/260167619/).
 
 ```
 $ git clone git@github.com:Machine-Learning-Tokyo/tfjs-workshop.git
